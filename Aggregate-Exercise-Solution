@@ -1,0 +1,12 @@
+SELECT DepartmentID,
+    AVG(Salary) AS AvgSalary,
+    SUM(Salary) AS TotalSalaryExpenses,
+    MAX(Salary) AS MaxSalary,
+    MIN(Salary) AS MinSalary,
+    COUNT(*) AS EmployeeCount
+FROM Employees
+GROUP BY DepartmentID
+HAVING AVG(Salary) > 50000;
+
+
+

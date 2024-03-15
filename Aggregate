@@ -1,0 +1,95 @@
+SELECT EmployeeID, Firstname, Salary, DepartmentID
+FROM Employees
+WHERE Salary BETWEEN 50000 AND 60000;
+
+--------------------------------------------------------
+
+SELECT COUNT(*) AS EmployeeCount
+FROM Employees
+WHERE Salary BETWEEN 50000 AND 60000;
+
+--------------------------------------------------------
+
+SELECT DepartmentID, COUNT(*) AS EmployeeCount
+FROM Employees
+WHERE Salary BETWEEN 50000 AND 60000
+GROUP BY DepartmentID;
+
+-------------------------------------------------------------
+
+SELECT DepartmentID, SUM(Salary) AS TotalSalaryExpenses
+FROM Employees;
+
+-------------------------------------------------------------
+
+SELECT DepartmentID, SUM(Salary) AS TotalSalaryExpenses
+FROM Employees
+GROUP BY DepartmentID;
+
+---------------------------------------------------------------------------
+
+
+SELECT Firstname, LastName, MAX(Salary) AS MaxSalary
+FROM Employees;
+
+/*INSERT INTO Employees (FirstName, LastName, Position, Email, Salary, DepartmentID) VALUES
+('Ella', 'Jones', 'Manager', 'Ella.Jones@example.com', 62000, 1),
+('Simon', 'Smith', 'Developer', 'Simon.smith@example.com', 62000, 2),
+('Jason', 'Johnson', 'Software Developer', 'Jason.johnson@example.com', 62000, 2);*/
+
+
+--------------------------------------------------------------------
+
+
+SELECT EmployeeID, Firstname, LastName, Salary
+FROM Employees
+WHERE Salary = (SELECT MAX(Salary) FROM Employees);
+
+
+----------------------------------------------------------------------
+
+SELECT Firstname, LastName, MIN(Salary) AS MinSalary
+FROM Employees;
+
+----------------------------------------------------------------------
+
+SELECT DepartmentID, AVG(Salary) AS AverageSalary
+FROM Employees
+GROUP BY DepartmentID;
+
+----------------------------------------------------------------------
+
+SELECT DepartmentID, ROUND(AVG(Salary), 2) AS AverageSalary
+FROM Employees
+GROUP BY DepartmentID;
+
+-------------------------------------------------------------------------
+
+
+SELECT DepartmentID, Position, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Position, DepartmentID; --swap DepartmentID, Position to see the better understand
+
+--------------------------------------------------------------------------
+
+select distinct position
+from employees;
+------------------------------------------------------------------------------
+
+SELECT DepartmentID, COUNT(*) AS EmployeeCount
+FROM Employees
+GROUP BY DepartmentID
+HAVING COUNT(*) > 5;
+
+------------------------------------------------------------------------------
+
+
+SELECT DepartmentID, AVG(Salary) AS AvgSalary 
+FROM Employees 
+GROUP BY DepartmentID 
+HAVING AVG(Salary) < 55000;
+
+--------------------------------------------------------------------------------
+
+select *
+from employees
